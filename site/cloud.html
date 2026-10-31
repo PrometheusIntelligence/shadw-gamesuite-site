@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>shadw.cloud in the suite: hosting · SHADW Game Suite</title>
+<meta name="description" content="How shadw.cloud will host a game made with the SHADW Game Suite: web build, lobby and matchmaking functions, server cells that scale to zero. Phase G3, planned.">
+<link rel="canonical" href="https://shadw-gamesuite-site.shadw.app/cloud">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="shadw.cloud in the suite: hosting · SHADW Game Suite">
+<meta property="og:description" content="How shadw.cloud will host a game made with the SHADW Game Suite: web build, lobby and matchmaking functions, server cells that scale to zero. Phase G3, planned.">
+<meta property="og:url" content="https://shadw-gamesuite-site.shadw.app/cloud">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://shadw-gamesuite-site.shadw.app/img/shipwright-brig.png">
+<meta name="theme-color" content="#0f1417">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="6" fill="#161e22" stroke="#f3c76b" stroke-width="2"/><path d="M8 10h7v4H8zM17 10h7v4h-7zM8 18h7v4H8z" fill="#4f86a6"/><path d="M17 18h7v4h-7z" fill="#f3c76b"/></svg><span>SHADW Game Suite</span></a>
+<nav class="main" aria-label="Main"><a href="index.html">Overview</a><a href="terrain.html">Terrain</a><a href="forge.html">Forge</a><a href="keyforge.html">KeyForge</a><a href="cloud.html" aria-current="page">shadw.cloud</a><a href="project-file.html">Project file</a><a href="games.html">Games</a><a href="roadmap.html">Roadmap</a></nav>
+</div></header>
+<main id="main">
+<div class="wrap">
+<header class="pagehead"><p class="kicker">"deploy" · shadw.cloud</p><h1>Ship it to the mesh</h1><p class="lede">One command is meant to put the web build, the lobby and the game servers live, and to scale the servers to zero between matches.</p><span class="status planned">G3 planned</span></header>
+
+<section class="grid2">
+<div>
+<h2>What it will do for a game</h2>
+<ul>
+<li>A <code>game</code> app type in shadw.cloud's <code>fluid.json</code>: a static web build, a pool of server cells with a <code>ws</code> or <code>udp</code> service, and the licensing and lobby functions.</li>
+<li>Lobby and matchmaking as ordinary functions with a small state store.</li>
+<li>A preview address for every build, for playtests.</li>
+<li>Crash dumps and telemetry into a per-game log.</li>
+<li>First netcode: <code>ws</code>, turn-based; UDP into cells proven separately (decision G4).</li>
+</ul>
+</div>
+<div>
+<h2>The section of the file it fills</h2>
+<pre class="code"><span class="k">"deploy"</span>: {
+  <span class="k">"web"</span>: "build/web",
+  <span class="k">"server"</span>: { <span class="k">"protocol"</span>: "ws", <span class="k">"port"</span>: 7777, <span class="k">"max_players"</span>: 8 }
+}</pre>
+<p><code>validate</code> already refuses a server with more players than the world has spawns.</p>
+</div>
+</section>
+
+<section>
+<h2>Not built yet</h2>
+<p class="notbuilt"><strong>All of it.</strong> <code>shadw game ship</code> exits with code 2 and names phase G3. G3 closes when 8 players finish a match across two nodes and the server cells scale to zero afterwards. Pricing is planned as free tools with paid hosting and licensing calls (decision G7); nothing is for sale yet.</p>
+</section>
+</div>
+</main>
+<footer><div class="wrap">
+<div><p><strong>SHADW Game Suite</strong><br>One project file and one CLI over SHADW Terrain, Forge, KeyForge and shadw.cloud.</p>
+<p>Status on 31 October 2026: phases G0 and G1 built; G2 to G5 planned. Nothing on this site is a hosted service you can sign up for yet.</p></div>
+<div><ul><li><a href="terrain.html">Terrain: make worlds</a></li><li><a href="forge.html">Forge: test in a sandbox</a></li><li><a href="keyforge.html">KeyForge: keys and licences</a></li><li><a href="cloud.html">shadw.cloud: hosting</a></li></ul></div>
+<div><ul><li><a href="project-file.html">shadw.game.json and the CLI</a></li><li><a href="games.html">Games made with it</a></li><li><a href="shipwright.html">Brine &amp; Brie: Shipwright</a></li><li><a href="roadmap.html">Roadmap and decisions</a></li><li><a href="https://shadw-terrain.shadw.app/">SHADW Terrain site</a></li><li><a href="https://personalportfolio.shadw.app/">SolutionsAsService</a></li></ul></div>
+</div></footer>
+</body>
+</html>

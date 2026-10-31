@@ -1,0 +1,32 @@
+shadw.cloud in the suite: hosting · SHADW Game Suite
+How shadw.cloud will host a game made with the SHADW Game Suite: web build, lobby and matchmaking functions, server cells that scale to zero. Phase G3, planned.
+cloud
+<div class="wrap">
+<header class="pagehead"><p class="kicker">"deploy" · shadw.cloud</p><h1>Ship it to the mesh</h1><p class="lede">One command is meant to put the web build, the lobby and the game servers live, and to scale the servers to zero between matches.</p><span class="status planned">G3 planned</span></header>
+
+<section class="grid2">
+<div>
+<h2>What it will do for a game</h2>
+<ul>
+<li>A <code>game</code> app type in shadw.cloud's <code>fluid.json</code>: a static web build, a pool of server cells with a <code>ws</code> or <code>udp</code> service, and the licensing and lobby functions.</li>
+<li>Lobby and matchmaking as ordinary functions with a small state store.</li>
+<li>A preview address for every build, for playtests.</li>
+<li>Crash dumps and telemetry into a per-game log.</li>
+<li>First netcode: <code>ws</code>, turn-based; UDP into cells proven separately (decision G4).</li>
+</ul>
+</div>
+<div>
+<h2>The section of the file it fills</h2>
+<pre class="code"><span class="k">"deploy"</span>: {
+  <span class="k">"web"</span>: "build/web",
+  <span class="k">"server"</span>: { <span class="k">"protocol"</span>: "ws", <span class="k">"port"</span>: 7777, <span class="k">"max_players"</span>: 8 }
+}</pre>
+<p><code>validate</code> already refuses a server with more players than the world has spawns.</p>
+</div>
+</section>
+
+<section>
+<h2>Not built yet</h2>
+<p class="notbuilt"><strong>All of it.</strong> <code>shadw game ship</code> exits with code 2 and names phase G3. G3 closes when 8 players finish a match across two nodes and the server cells scale to zero afterwards. Pricing is planned as free tools with paid hosting and licensing calls (decision G7); nothing is for sale yet.</p>
+</section>
+</div>

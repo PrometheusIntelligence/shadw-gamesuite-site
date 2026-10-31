@@ -1,0 +1,42 @@
+Brine &amp; Brie: Shipwright · a pixel-art mouse sailing game on the SHADW Game Suite
+Brine &amp; Brie: Shipwright: build a ship on a grid, then walk its deck and work the helm, sails and anchor while it sails with the wind. C# on Godot 4 .NET; the first full game on the SHADW Game Suite.
+games
+<div class="wrap">
+<header class="pagehead"><p class="kicker">Game · first full game on the suite</p><h1>Brine &amp; Brie: Shipwright</h1><p class="lede">Build a ship on a grid. Then crew it: Brie walks the deck and can only work the station she stands at. Set the tiller, run forward to trim the sail, run back before the wind shifts.</p><span class="status planned">in development · desktop · not released</span></header>
+
+<section class="grid2">
+<figure class="shot"><img src="img/shipwright-build.png" width="480" height="270" alt="The build screen: a 7 by 11 grid with a skiff of hull, mast, sails, anchor windlass and rudder; part palette with counts; ship stats."><figcaption>The slip: hull, mast, sail, rudder and anchor windlass on a 7×11 grid. The ship launches only if every station can be reached on foot from the helm.</figcaption></figure>
+<figure class="shot"><img src="img/shipwright-skiff.png" width="480" height="270" alt="At sea in the deck view: the skiff upright, Brie at the tiller, the sea turning beneath, gauges for tiller and sail."><figcaption>Deck view: the ship stays upright and the sea turns beneath it. Brie at the tiller.</figcaption></figure>
+</section>
+
+<section>
+<h2>A ship is a place, not a cursor</h2>
+<div class="grid3">
+<div class="card"><h3>Helm</h3><p>Stand on the tiller to put it over. It stays where you leave it, so a lone mouse can go and trim.</p></div>
+<div class="card"><h3>Sail line</h3><p>One per mast, worked from beside it: raise, reef, sheet in or ease out. The boom swings to leeward on its own.</p></div>
+<div class="card"><h3>Anchor windlass</h3><p>Drop it at once; hauling it back takes two and a half seconds of holding.</p></div>
+</div>
+<p>A second player brings Pip aboard on the same keyboard. On the test course a lone mouse sails the two-masted brig round in 186.8 s; with two mice it takes 72.6 s.</p>
+</section>
+
+<section class="grid2 band">
+<figure class="shot"><img src="img/shipwright-brig.png" width="480" height="270" alt="The brig at sea: Brie at the helm, Pip at the first mast."><figcaption>The brig: Brie steers, Pip works mast 1.</figcaption></figure>
+<figure class="shot"><img src="img/shipwright-chart.png" width="480" height="270" alt="Chart view: north-up, the small ship near a sandy coast on a Terrain map."><figcaption>Chart view (Tab): north-up, on a sea SHADW Terrain generated.</figcaption></figure>
+</section>
+
+<section>
+<h2>Built on the suite</h2>
+<div class="tablewrap"><table>
+<tr><th>Section</th><th>What it does here</th></tr>
+<tr><td><code>"world"</code></td><td>Terrain <code>coastal_outpost</code>, seed 11, with the most water Terrain allows; the course is three buoys on it.</td></tr>
+<tr><td><code>"engine"</code></td><td>Godot 4.7.2 .NET. The game rules are plain C# with no engine types, so the game and the test run the same numbers.</td></tr>
+<tr><td><code>"test"</code></td><td>Under Forge with the network off: ship rules, station rules, a bot crew that walks between stations and rounds the course, sailing physics, and the same track hash for the same seed. 25 / 25 checks.</td></tr>
+</table></div>
+<p>The pixel art is drawn for the game as pixel maps in source, in the palette of the Brine &amp; Brie world.</p>
+</section>
+
+<section>
+<h2>Not built yet</h2>
+<p class="notbuilt"><strong>Most of a game.</strong> No release or download, no sound, no saving, no cannons, cargo or trading, and no online crew. Next: a shared sea that SHADW Terrain generates chunk by chunk as crews explore it together. Godot cannot yet export C# games to the web, so Shipwright is a desktop game.</p>
+</section>
+</div>

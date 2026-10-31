@@ -1,0 +1,32 @@
+KeyForge in the suite: keys and licences · SHADW Game Suite
+How SHADW KeyForge will sign every build and license every player for a game made with the SHADW Game Suite. Phase G2: the signing foundation is built; the hosted API is not.
+keyforge
+<div class="wrap">
+<header class="pagehead"><p class="kicker">"keys" · SHADW KeyForge</p><h1>Sign every build, license every player</h1><p class="lede">"Dev keys" means three separate things. KeyForge keeps them apart so a leaked beta key never signs a patch.</p><span class="status planned">G2 planned · foundation built</span></header>
+
+<section class="grid3">
+<div class="card"><h3>Studio signing keys</h3><p>One per game. They sign every build manifest Forge produces, and the game checks the signature before it runs a patch.</p></div>
+<div class="card"><h3>Entitlement keys</h3><p>Dev, beta, press, retail and per-feature (DLC), with device limits and an offline policy.</p></div>
+<div class="card"><h3>Service keys</h3><p>For the game's own servers to call the licensing API and each other.</p></div>
+</section>
+
+<section>
+<h2>The section of the file it fills</h2>
+<pre class="code"><span class="k">"keys"</span>: { <span class="k">"tiers"</span>: ["dev", "beta", "retail"], <span class="k">"device_limit"</span>: 3 }</pre>
+<p>Today the suite checks this section's shape only. In G2 it becomes a KeyForge game registration.</p>
+</section>
+
+<section>
+<h2>What exists</h2>
+<ul>
+<li>Signed build manifests (<code>kfb1</code>): a studio build key signs the list of files; changed, missing and unlisted files are refused as tampered, in both the JavaScript and the Rust implementations.</li>
+<li>KeyForge's core is Rust with a C ABI, so a Godot GDExtension or a Unity package can call it.</li>
+<li>Planned custody: a browser key that cannot be exported for dev builds, a hardware key for retail, and never a retail key held on a server.</li>
+</ul>
+</section>
+
+<section>
+<h2>Not built yet</h2>
+<p class="notbuilt"><strong>The hosted licensing API, the engine plugin and revocation.</strong> G2 closes when the licensing API runs as a shadw.cloud function, a game refuses an unsigned or tampered build, and a revoked beta key stops working on another node within one registry block. None of that runs yet, and no game on this site is licensed.</p>
+</section>
+</div>

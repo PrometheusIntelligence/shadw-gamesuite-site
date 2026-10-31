@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>shadw.game.json and the shadw game CLI · SHADW Game Suite</title>
+<meta name="description" content="The SHADW Game Suite's project file and CLI: one shadw.game.json names which product contract each part of a game fills; the shadw game CLI runs them. Godot 4 first.">
+<link rel="canonical" href="https://shadw-gamesuite-site.shadw.app/project-file">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="shadw.game.json and the shadw game CLI · SHADW Game Suite">
+<meta property="og:description" content="The SHADW Game Suite's project file and CLI: one shadw.game.json names which product contract each part of a game fills; the shadw game CLI runs them. Godot 4 first.">
+<meta property="og:url" content="https://shadw-gamesuite-site.shadw.app/project-file">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://shadw-gamesuite-site.shadw.app/img/shipwright-brig.png">
+<meta name="theme-color" content="#0f1417">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="6" fill="#161e22" stroke="#f3c76b" stroke-width="2"/><path d="M8 10h7v4H8zM17 10h7v4h-7zM8 18h7v4H8z" fill="#4f86a6"/><path d="M17 18h7v4h-7z" fill="#f3c76b"/></svg><span>SHADW Game Suite</span></a>
+<nav class="main" aria-label="Main"><a href="index.html">Overview</a><a href="terrain.html">Terrain</a><a href="forge.html">Forge</a><a href="keyforge.html">KeyForge</a><a href="cloud.html">shadw.cloud</a><a href="project-file.html" aria-current="page">Project file</a><a href="games.html">Games</a><a href="roadmap.html">Roadmap</a></nav>
+</div></header>
+<main id="main">
+<div class="wrap">
+<header class="pagehead"><p class="kicker">The thread</p><h1>One project file, one CLI</h1><p class="lede"><code>shadw.game.json</code> sits at the root of the game. Each section names an existing product contract; the suite adds no schema below it, and unknown fields are errors, so a typo never passes silently.</p></header>
+
+<section class="grid2">
+<div>
+<h2>The whole file</h2>
+<pre class="code">{
+  <span class="k">"game"</span>: "tidewatch",
+  <span class="k">"engine"</span>: { "name": "godot", "version": "4.3", "export": "web" },
+  <span class="k">"world"</span>: { "generator": "tactical-maps", "params": { "mapType": "coastal_outpost", "seed": 7 } },
+  <span class="k">"test"</span>: { "command": ["godot", "--headless", "--path", ".", "--script", "res://match/bot_match.gd"] },
+  <span class="k">"keys"</span>: { "tiers": ["dev", "beta", "retail"], "device_limit": 3 },
+  <span class="k">"deploy"</span>: { "web": "build/web", "server": { "protocol": "ws", "port": 7777, "max_players": 8 } },
+  <span class="k">"cyber"</span>: { "staging": true, "drills": ["forged-entitlement", "replay", "flood"] }
+}</pre>
+<p style="color:var(--muted)">Shortened from Tidewatch's file.</p>
+</div>
+<div>
+<h2>The CLI</h2>
+<div class="tablewrap"><table>
+<tr><th>Verb</th><th>Does</th><th>State</th></tr>
+<tr><td><code>init</code></td><td>writes the project file (and a Godot project)</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>validate</code></td><td>checks the file, world params against Terrain, seats against spawns</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>world</code></td><td>generates and locks the map; Godot scene</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>test</code></td><td>runs the headless test under Forge</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>timeline</code></td><td>merges every run's events, checks chains</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>build</code></td><td>engine export under Forge</td><td><span class="status planned">G1</span></td></tr>
+<tr><td><code>sign</code>, <code>keys</code></td><td>signed builds, entitlements</td><td><span class="status planned">G2</span></td></tr>
+<tr><td><code>ship</code></td><td>deploy to shadw.cloud</td><td><span class="status planned">G3</span></td></tr>
+<tr><td><code>attack</code></td><td>drills against staging</td><td><span class="status planned">G4</span></td></tr>
+</table></div>
+<p>Verbs not built yet exit with code 2 and name their phase.</p>
+</div>
+</section>
+
+<section>
+<h2>Godot 4 first</h2>
+<p>Decision G1 picked Godot 4: open source, so headless servers run with no licence questions, and GDExtension can load KeyForge's C ABI. The game folder is the Godot project. GDScript and C# (Godot .NET) both work: Brine &amp; Brie: Shipwright is written in C#.</p>
+<h3>Try it</h3>
+<pre class="code"><span class="c"># Node 23.6 or later; shadw-terrain and shadw-forge checked out beside the suite</span>
+node src/cli.ts game init mygame --dir mygame
+node src/cli.ts game world --dir mygame
+node src/cli.ts game test --dir mygame</pre>
+<p class="notbuilt"><strong>Not public yet.</strong> The suite's repositories are private while G1 finishes, so these commands are for the team today.</p>
+</section>
+</div>
+</main>
+<footer><div class="wrap">
+<div><p><strong>SHADW Game Suite</strong><br>One project file and one CLI over SHADW Terrain, Forge, KeyForge and shadw.cloud.</p>
+<p>Status on 31 October 2026: phases G0 and G1 built; G2 to G5 planned. Nothing on this site is a hosted service you can sign up for yet.</p></div>
+<div><ul><li><a href="terrain.html">Terrain: make worlds</a></li><li><a href="forge.html">Forge: test in a sandbox</a></li><li><a href="keyforge.html">KeyForge: keys and licences</a></li><li><a href="cloud.html">shadw.cloud: hosting</a></li></ul></div>
+<div><ul><li><a href="project-file.html">shadw.game.json and the CLI</a></li><li><a href="games.html">Games made with it</a></li><li><a href="shipwright.html">Brine &amp; Brie: Shipwright</a></li><li><a href="roadmap.html">Roadmap and decisions</a></li><li><a href="https://shadw-terrain.shadw.app/">SHADW Terrain site</a></li><li><a href="https://personalportfolio.shadw.app/">SolutionsAsService</a></li></ul></div>
+</div></footer>
+</body>
+</html>

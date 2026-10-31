@@ -1,0 +1,36 @@
+Games made with the SHADW Game Suite
+Three games run on the SHADW Game Suite today: Brine &amp; Brie: Shipwright (C# on Godot .NET), Tidewatch (Godot tactics) and Shadow Duel (a JavaScript card game). Each passes its bot test under SHADW Forge.
+games
+<div class="wrap">
+<header class="pagehead"><p class="kicker">Games</p><h1>Games that already run it</h1><p class="lede">Three different games in three languages, each with a <code>shadw.game.json</code> and a headless test that passes under Forge. None is released yet.</p></header>
+
+<section id="shipwright" class="grid2">
+<figure class="shot"><img src="img/shipwright-brig.png" width="480" height="270" alt="Brine &amp; Brie: Shipwright: a two-masted brig seen from above on a teal sea, Brie at the helm and Pip at the first mast."><figcaption>Captured from the running game, 480×270.</figcaption></figure>
+<div>
+<h2>Brine &amp; Brie: Shipwright</h2>
+<p>A pixel-art mouse builds a ship on a grid and sails it with the wind. Brie walks the deck and works only the station she stands at; a bigger ship wants a second mouse. C# on Godot 4.7.2 .NET, on a sea from Terrain.</p>
+<p><span class="status built">25 / 25 checks under Forge</span></p>
+<p><a href="shipwright.html">More on Shipwright</a></p>
+</div>
+</section>
+
+<section id="tidewatch" class="band grid2">
+<div>
+<h2>Tidewatch</h2>
+<p>The suite's map showcase: a Godot tactics game on a Terrain <code>coastal_outpost</code> map (seed 7, 96×96, 8 spawns, one per seat). Its bot match plays 3 v 3 units over 20 seeds.</p>
+<p><span class="status built">6 / 14 wins over 20 seeds</span> The bot test shows spawn-1 is favoured on this map: the kind of finding the test exists to surface.</p>
+</div>
+<figure class="figure-big"><img src="img/tidewatch-map.svg" width="300" height="300" alt="Tidewatch's map."></figure>
+</section>
+
+<section id="shadow-duel" class="band">
+<h2>Shadow Duel</h2>
+<p>A JavaScript card game with a seeded bot. Its bot-versus-bot match runs on the real rules engine under Forge: <span class="status built">12 / 8 wins, 19.5 turns on average, 20 seeds</span>. It is the suite's chosen example title (decision G3), and its port to Godot is planned.</p>
+<p>Source: <a href="https://github.com/SolutionsAsService/shadw.duel">SolutionsAsService/shadw.duel</a>.</p>
+</section>
+
+<section class="band">
+<h2>The same proof for each</h2>
+<p>A seed replays the same match and the same log hash in every one of them, and every run leaves a hashed artifact and an event chain. That is what <a href="forge.html">Forge</a> adds.</p>
+</section>
+</div>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forge in the suite: bot matches in a sandbox · SHADW Game Suite</title>
+<meta name="description" content="shadw game test runs a game's headless bot test under SHADW Forge with the network off, hashes what it writes and records an event chain.">
+<link rel="canonical" href="https://shadw-gamesuite-site.shadw.app/forge">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Forge in the suite: bot matches in a sandbox · SHADW Game Suite">
+<meta property="og:description" content="shadw game test runs a game's headless bot test under SHADW Forge with the network off, hashes what it writes and records an event chain.">
+<meta property="og:url" content="https://shadw-gamesuite-site.shadw.app/forge">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://shadw-gamesuite-site.shadw.app/img/shipwright-brig.png">
+<meta name="theme-color" content="#0f1417">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="6" fill="#161e22" stroke="#f3c76b" stroke-width="2"/><path d="M8 10h7v4H8zM17 10h7v4h-7zM8 18h7v4H8z" fill="#4f86a6"/><path d="M17 18h7v4h-7z" fill="#f3c76b"/></svg><span>SHADW Game Suite</span></a>
+<nav class="main" aria-label="Main"><a href="index.html">Overview</a><a href="terrain.html">Terrain</a><a href="forge.html" aria-current="page">Forge</a><a href="keyforge.html">KeyForge</a><a href="cloud.html">shadw.cloud</a><a href="project-file.html">Project file</a><a href="games.html">Games</a><a href="roadmap.html">Roadmap</a></nav>
+</div></header>
+<main id="main">
+<div class="wrap">
+<header class="pagehead"><p class="kicker">"test" · SHADW Forge</p><h1>Test the game where it cannot phone home</h1><p class="lede">Put your headless test in <code>shadw.game.json</code>. Forge runs it in a throwaway copy with the network off, a timeout and an output cap, and records what happened.</p><span class="status built">built (G1)</span></header>
+
+<section class="grid2">
+<div>
+<h2>What it does for a game</h2>
+<ul>
+<li>Copies the project without <code>.git</code>, <code>.godot</code>, <code>.shadw</code> and build output, and runs <code>test.command</code> there.</li>
+<li><code>godot</code> as the first word means the Godot binary in <code>$SHADW_GODOT</code>.</li>
+<li>The test writes results to <code>$SHADW_ARTIFACT_DIR</code>; Forge hashes each file.</li>
+<li>Every run lands in <code>.shadw/runs/&lt;id&gt;/</code>: manifest, result, events and artifacts.</li>
+<li><code>shadw game timeline</code> merges every run's events, checks each hash chain, and exits 1 on a broken one.</li>
+</ul>
+</div>
+<div>
+<h2>A real run</h2>
+<p>Brine &amp; Brie: Shipwright, 31 October 2026, run <code>exec-42275c0f</code>: exit 0 in 4,479 ms, network off.</p>
+<div class="chain" aria-label="Event chain of the run"><span>execution.started</span><i>→ prev ed797a57ab5c</i><span>execution.completed</span><i>→ prev b1229f0e7c56</i><span>execution.cleaned_up</span></div>
+<p style="margin-top:12px">Artifact: <code>summary.json</code>, 3,627 bytes, sha256 <code>7d4b084c555ecc48…</code>: 25 checks passed.</p>
+</div>
+</section>
+
+<section>
+<h2>The section of the file it fills</h2>
+<pre class="code"><span class="k">"test"</span>: {
+  <span class="k">"command"</span>: ["godot", "--headless", "--path", ".", "--script", "res://tests/forge_entry.gd"],
+  <span class="k">"timeout"</span>: "180s",
+  <span class="k">"memory"</span>: "1Gi"
+}</pre>
+</section>
+
+<section>
+<h2>Games tested this way</h2>
+<div class="tablewrap"><table>
+<tr><th>Game</th><th>Test</th><th>Result</th></tr>
+<tr><td>Tidewatch</td><td>3 v 3 units, 20 seeds</td><td>6 / 14 wins; spawn-1 is favoured on this map</td></tr>
+<tr><td>Shadow Duel</td><td>bot v bot on the real rules engine, 20 seeds</td><td>12 / 8 wins, 19.5 turns on average</td></tr>
+<tr><td>Brine &amp; Brie: Shipwright</td><td>ship rules, stations, bot crew round the course, physics</td><td>25 / 25 checks; the same seed gives the same track hash</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>Not built yet</h2>
+<p class="notbuilt"><strong>Isolation.</strong> Forge's local runner is a process with the network off, <em>not a security boundary</em>: it is for a studio's own code. Memory and CPU limits are not enforced yet. Running untrusted mods waits for Forge's escape test (decision G5). <code>shadw game build</code> (the Godot export) is still open in G1.</p>
+</section>
+</div>
+</main>
+<footer><div class="wrap">
+<div><p><strong>SHADW Game Suite</strong><br>One project file and one CLI over SHADW Terrain, Forge, KeyForge and shadw.cloud.</p>
+<p>Status on 31 October 2026: phases G0 and G1 built; G2 to G5 planned. Nothing on this site is a hosted service you can sign up for yet.</p></div>
+<div><ul><li><a href="terrain.html">Terrain: make worlds</a></li><li><a href="forge.html">Forge: test in a sandbox</a></li><li><a href="keyforge.html">KeyForge: keys and licences</a></li><li><a href="cloud.html">shadw.cloud: hosting</a></li></ul></div>
+<div><ul><li><a href="project-file.html">shadw.game.json and the CLI</a></li><li><a href="games.html">Games made with it</a></li><li><a href="shipwright.html">Brine &amp; Brie: Shipwright</a></li><li><a href="roadmap.html">Roadmap and decisions</a></li><li><a href="https://shadw-terrain.shadw.app/">SHADW Terrain site</a></li><li><a href="https://personalportfolio.shadw.app/">SolutionsAsService</a></li></ul></div>
+</div></footer>
+</body>
+</html>

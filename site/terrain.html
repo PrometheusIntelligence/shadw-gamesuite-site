@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terrain in the suite: worlds from a seed · SHADW Game Suite</title>
+<meta name="description" content="How the SHADW Game Suite asks SHADW Terrain for a game's map, locks it by content hash and turns it into a Godot scene.">
+<link rel="canonical" href="https://shadw-gamesuite-site.shadw.app/terrain">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Terrain in the suite: worlds from a seed · SHADW Game Suite">
+<meta property="og:description" content="How the SHADW Game Suite asks SHADW Terrain for a game's map, locks it by content hash and turns it into a Godot scene.">
+<meta property="og:url" content="https://shadw-gamesuite-site.shadw.app/terrain">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://shadw-gamesuite-site.shadw.app/img/shipwright-brig.png">
+<meta name="theme-color" content="#0f1417">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="6" fill="#161e22" stroke="#f3c76b" stroke-width="2"/><path d="M8 10h7v4H8zM17 10h7v4h-7zM8 18h7v4H8z" fill="#4f86a6"/><path d="M17 18h7v4h-7z" fill="#f3c76b"/></svg><span>SHADW Game Suite</span></a>
+<nav class="main" aria-label="Main"><a href="index.html">Overview</a><a href="terrain.html" aria-current="page">Terrain</a><a href="forge.html">Forge</a><a href="keyforge.html">KeyForge</a><a href="cloud.html">shadw.cloud</a><a href="project-file.html">Project file</a><a href="games.html">Games</a><a href="roadmap.html">Roadmap</a></nav>
+</div></header>
+<main id="main">
+<div class="wrap">
+<header class="pagehead"><p class="kicker">"world" · SHADW Terrain</p><h1>Make the world from a seed</h1><p class="lede">Name a map type and a seed in <code>shadw.game.json</code>. Terrain generates the map, the suite locks it, and Godot gets a scene it can load.</p><span class="status built">built (G0)</span></header>
+
+<section class="grid2">
+<div>
+<h2>What it does for a game</h2>
+<ul>
+<li><code>shadw game world</code> writes <code>world/&lt;game&gt;.map.json</code>, an SVG preview and <code>world.lock.json</code> with the map's content hash.</li>
+<li><code>shadw game world --check</code> regenerates the map and fails if the hash moved, so a Terrain change that alters your world is caught before it ships.</li>
+<li><code>gameplay.spawnCount</code> asks for up to 8 spawns; <code>validate</code> refuses a server with more seats than spawns.</li>
+<li>For Godot it writes a scene with one <code>ShadwMap</code> node: a tile layer with collision on water and walls, and a marker per spawn and structure.</li>
+<li>Terrain's 3D voxel worlds import into Godot too (a <code>ShadwVoxelWorld</code> node); not yet wired into <code>shadw game world</code>.</li>
+</ul>
+</div>
+<figure class="figure-big"><img src="img/tidewatch-map.svg" width="384" height="384" alt="Tidewatch's coastal outpost map from SHADW Terrain."><figcaption style="color:var(--muted);font-size:.88rem;margin-top:8px">Tidewatch: <code>coastal_outpost</code>, seed 7, 96×96. Godot 4.7.2 loads it as 9,216 tiles, 1,309 blocking, 8 spawns and 24 structures.</figcaption></figure>
+</section>
+
+<section>
+<h2>The section of the file it fills</h2>
+<pre class="code"><span class="k">"world"</span>: {
+  <span class="k">"generator"</span>: "tactical-maps",
+  <span class="k">"params"</span>: {
+    <span class="k">"mapType"</span>: "coastal_outpost", <span class="k">"seed"</span>: 7, <span class="k">"width"</span>: 96, <span class="k">"height"</span>: 96,
+    <span class="k">"gameplay"</span>: { <span class="k">"spawnCount"</span>: 8, <span class="k">"minimumSpawnDistance"</span>: 16 }
+  }
+}</pre>
+<p>The parameters are Terrain's own; the suite checks them with Terrain's validator and adds no schema of its own below them.</p>
+</section>
+
+<section>
+<h2>A 3D world, too</h2>
+<figure class="shot" style="max-width:640px"><img src="img/voxel-demo.png" alt="A small voxel world rendered by Godot: forest, plains, beach and sea."><figcaption>Four 16×16×128 voxel chunks from Terrain (seed 2026), rendered by Godot 4.7.2: 15,473 faces, every chunk's hash checked on load.</figcaption></figure>
+</section>
+
+<section>
+<h2>Not built yet</h2>
+<p class="notbuilt"><strong>Open sea for sailing games, chunk by chunk.</strong> A map type with open water on every border, so a shared world can be generated a chunk at a time as players explore, was added to Terrain on 31 October 2026 and is not yet wired into the suite or a game. Voxel chunk streaming and editing are not built.</p>
+<p>More on Terrain itself: <a href="https://shadw-terrain.shadw.app/">shadw-terrain.shadw.app</a>.</p>
+</section>
+</div>
+</main>
+<footer><div class="wrap">
+<div><p><strong>SHADW Game Suite</strong><br>One project file and one CLI over SHADW Terrain, Forge, KeyForge and shadw.cloud.</p>
+<p>Status on 31 October 2026: phases G0 and G1 built; G2 to G5 planned. Nothing on this site is a hosted service you can sign up for yet.</p></div>
+<div><ul><li><a href="terrain.html">Terrain: make worlds</a></li><li><a href="forge.html">Forge: test in a sandbox</a></li><li><a href="keyforge.html">KeyForge: keys and licences</a></li><li><a href="cloud.html">shadw.cloud: hosting</a></li></ul></div>
+<div><ul><li><a href="project-file.html">shadw.game.json and the CLI</a></li><li><a href="games.html">Games made with it</a></li><li><a href="shipwright.html">Brine &amp; Brie: Shipwright</a></li><li><a href="roadmap.html">Roadmap and decisions</a></li><li><a href="https://shadw-terrain.shadw.app/">SHADW Terrain site</a></li><li><a href="https://personalportfolio.shadw.app/">SolutionsAsService</a></li></ul></div>
+</div></footer>
+</body>
+</html>

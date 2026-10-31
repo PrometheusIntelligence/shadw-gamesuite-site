@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<style>
+.f{fill:#161e22;stroke:#f3c76b}.w{fill:#4f86a6}.g{fill:#f3c76b}
+@media (prefers-color-scheme: dark){.f{fill:#0b0f11;stroke:#f3c76b}.w{fill:#6aa6c8}}
+</style>
+<rect class="f" x="2" y="2" width="28" height="28" rx="6" stroke-width="2.5"/>
+<rect class="w" x="7" y="8" width="8" height="6"/><rect class="w" x="17" y="8" width="8" height="6"/>
+<rect class="w" x="7" y="18" width="8" height="6"/><rect class="g" x="17" y="18" width="8" height="6"/>
+</svg>

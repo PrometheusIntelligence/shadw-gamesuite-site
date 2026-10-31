@@ -1,0 +1,43 @@
+Terrain in the suite: worlds from a seed · SHADW Game Suite
+How the SHADW Game Suite asks SHADW Terrain for a game's map, locks it by content hash and turns it into a Godot scene.
+terrain
+<div class="wrap">
+<header class="pagehead"><p class="kicker">"world" · SHADW Terrain</p><h1>Make the world from a seed</h1><p class="lede">Name a map type and a seed in <code>shadw.game.json</code>. Terrain generates the map, the suite locks it, and Godot gets a scene it can load.</p><span class="status built">built (G0)</span></header>
+
+<section class="grid2">
+<div>
+<h2>What it does for a game</h2>
+<ul>
+<li><code>shadw game world</code> writes <code>world/&lt;game&gt;.map.json</code>, an SVG preview and <code>world.lock.json</code> with the map's content hash.</li>
+<li><code>shadw game world --check</code> regenerates the map and fails if the hash moved, so a Terrain change that alters your world is caught before it ships.</li>
+<li><code>gameplay.spawnCount</code> asks for up to 8 spawns; <code>validate</code> refuses a server with more seats than spawns.</li>
+<li>For Godot it writes a scene with one <code>ShadwMap</code> node: a tile layer with collision on water and walls, and a marker per spawn and structure.</li>
+<li>Terrain's 3D voxel worlds import into Godot too (a <code>ShadwVoxelWorld</code> node); not yet wired into <code>shadw game world</code>.</li>
+</ul>
+</div>
+<figure class="figure-big"><img src="img/tidewatch-map.svg" width="384" height="384" alt="Tidewatch's coastal outpost map from SHADW Terrain."><figcaption style="color:var(--muted);font-size:.88rem;margin-top:8px">Tidewatch: <code>coastal_outpost</code>, seed 7, 96×96. Godot 4.7.2 loads it as 9,216 tiles, 1,309 blocking, 8 spawns and 24 structures.</figcaption></figure>
+</section>
+
+<section>
+<h2>The section of the file it fills</h2>
+<pre class="code"><span class="k">"world"</span>: {
+  <span class="k">"generator"</span>: "tactical-maps",
+  <span class="k">"params"</span>: {
+    <span class="k">"mapType"</span>: "coastal_outpost", <span class="k">"seed"</span>: 7, <span class="k">"width"</span>: 96, <span class="k">"height"</span>: 96,
+    <span class="k">"gameplay"</span>: { <span class="k">"spawnCount"</span>: 8, <span class="k">"minimumSpawnDistance"</span>: 16 }
+  }
+}</pre>
+<p>The parameters are Terrain's own; the suite checks them with Terrain's validator and adds no schema of its own below them.</p>
+</section>
+
+<section>
+<h2>A 3D world, too</h2>
+<figure class="shot" style="max-width:640px"><img src="img/voxel-demo.png" alt="A small voxel world rendered by Godot: forest, plains, beach and sea."><figcaption>Four 16×16×128 voxel chunks from Terrain (seed 2026), rendered by Godot 4.7.2: 15,473 faces, every chunk's hash checked on load.</figcaption></figure>
+</section>
+
+<section>
+<h2>Not built yet</h2>
+<p class="notbuilt"><strong>Open sea for sailing games, chunk by chunk.</strong> A map type with open water on every border, so a shared world can be generated a chunk at a time as players explore, was added to Terrain on 31 October 2026 and is not yet wired into the suite or a game. Voxel chunk streaming and editing are not built.</p>
+<p>More on Terrain itself: <a href="https://shadw-terrain.shadw.app/">shadw-terrain.shadw.app</a>.</p>
+</section>
+</div>

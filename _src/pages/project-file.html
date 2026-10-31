@@ -1,0 +1,49 @@
+shadw.game.json and the shadw game CLI · SHADW Game Suite
+The SHADW Game Suite's project file and CLI: one shadw.game.json names which product contract each part of a game fills; the shadw game CLI runs them. Godot 4 first.
+project-file
+<div class="wrap">
+<header class="pagehead"><p class="kicker">The thread</p><h1>One project file, one CLI</h1><p class="lede"><code>shadw.game.json</code> sits at the root of the game. Each section names an existing product contract; the suite adds no schema below it, and unknown fields are errors, so a typo never passes silently.</p></header>
+
+<section class="grid2">
+<div>
+<h2>The whole file</h2>
+<pre class="code">{
+  <span class="k">"game"</span>: "tidewatch",
+  <span class="k">"engine"</span>: { "name": "godot", "version": "4.3", "export": "web" },
+  <span class="k">"world"</span>: { "generator": "tactical-maps", "params": { "mapType": "coastal_outpost", "seed": 7 } },
+  <span class="k">"test"</span>: { "command": ["godot", "--headless", "--path", ".", "--script", "res://match/bot_match.gd"] },
+  <span class="k">"keys"</span>: { "tiers": ["dev", "beta", "retail"], "device_limit": 3 },
+  <span class="k">"deploy"</span>: { "web": "build/web", "server": { "protocol": "ws", "port": 7777, "max_players": 8 } },
+  <span class="k">"cyber"</span>: { "staging": true, "drills": ["forged-entitlement", "replay", "flood"] }
+}</pre>
+<p style="color:var(--muted)">Shortened from Tidewatch's file.</p>
+</div>
+<div>
+<h2>The CLI</h2>
+<div class="tablewrap"><table>
+<tr><th>Verb</th><th>Does</th><th>State</th></tr>
+<tr><td><code>init</code></td><td>writes the project file (and a Godot project)</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>validate</code></td><td>checks the file, world params against Terrain, seats against spawns</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>world</code></td><td>generates and locks the map; Godot scene</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>test</code></td><td>runs the headless test under Forge</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>timeline</code></td><td>merges every run's events, checks chains</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>build</code></td><td>engine export under Forge</td><td><span class="status planned">G1</span></td></tr>
+<tr><td><code>sign</code>, <code>keys</code></td><td>signed builds, entitlements</td><td><span class="status planned">G2</span></td></tr>
+<tr><td><code>ship</code></td><td>deploy to shadw.cloud</td><td><span class="status planned">G3</span></td></tr>
+<tr><td><code>attack</code></td><td>drills against staging</td><td><span class="status planned">G4</span></td></tr>
+</table></div>
+<p>Verbs not built yet exit with code 2 and name their phase.</p>
+</div>
+</section>
+
+<section>
+<h2>Godot 4 first</h2>
+<p>Decision G1 picked Godot 4: open source, so headless servers run with no licence questions, and GDExtension can load KeyForge's C ABI. The game folder is the Godot project. GDScript and C# (Godot .NET) both work: Brine &amp; Brie: Shipwright is written in C#.</p>
+<h3>Try it</h3>
+<pre class="code"><span class="c"># Node 23.6 or later; shadw-terrain and shadw-forge checked out beside the suite</span>
+node src/cli.ts game init mygame --dir mygame
+node src/cli.ts game world --dir mygame
+node src/cli.ts game test --dir mygame</pre>
+<p class="notbuilt"><strong>Not public yet.</strong> The suite's repositories are private while G1 finishes, so these commands are for the team today.</p>
+</section>
+</div>
