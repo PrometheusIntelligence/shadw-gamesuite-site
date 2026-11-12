@@ -1,8 +1,8 @@
 Games made with the SHADW Game Suite
-Three games run on the SHADW Game Suite today: Brine &amp; Brie: Shipwright (C# on Godot .NET), Tidewatch (Godot tactics) and Shadow Duel (a JavaScript card game). Each passes its bot test under SHADW Forge.
+Four games run on the SHADW Game Suite today: Brine &amp; Brie: Shipwright (C# on Godot .NET), Tidewatch (Godot tactics), Shadow Duel (a JavaScript card game) and The Holy Temple (HolyC in TempleOS). Each passes its test under SHADW Forge.
 games
 <div class="wrap">
-<header class="pagehead"><p class="kicker">Games</p><h1>Games that already run it</h1><p class="lede">Three different games in three languages, each with a <code>shadw.game.json</code> and a headless test that passes under Forge. None is released yet.</p></header>
+<header class="pagehead"><p class="kicker">Games</p><h1>Games that already run it</h1><p class="lede">Four different games in four languages, each with a <code>shadw.game.json</code> and a headless test that passes under Forge. None is released yet.</p></header>
 
 <section id="shipwright" class="grid2">
 <figure class="shot"><img src="img/shipwright-brig.png" width="480" height="270" alt="Brine &amp; Brie: Shipwright: a two-masted brig seen from above on a teal sea, Brie at the helm and Pip at the first mast."><figcaption>Captured from the running game, 480×270.</figcaption></figure>
@@ -27,6 +27,16 @@ games
 <h2>Shadow Duel</h2>
 <p>A JavaScript card game with a seeded bot. Its bot-versus-bot match runs on the real rules engine under Forge: <span class="status built">12 / 8 wins, 19.5 turns on average, 20 seeds</span>. It is the suite's chosen example title (decision G3), and its port to Godot is planned.</p>
 <p>Source: <a href="https://github.com/SolutionsAsService/shadw.duel">SolutionsAsService/shadw.duel</a>.</p>
+</section>
+
+<section id="holy-temple" class="grid2">
+<div>
+<h2>The Holy Temple</h2>
+<p>A surreal RPG written in HolyC that runs inside TempleOS, the public-domain operating system by Terry A. Davis, under QEMU: 23 regions, 365 maps and over 360 people. Its test is the real thing: <code>shadw game test</code> boots TempleOS headless, the operating system compiles the game from source and runs its tests, and Forge hashes the serial log and the screenshots. The suite's <code>templeos</code> engine maps <code>gamec</code> to the TempleOS backend.</p>
+<p><span class="status built">TempleOS verdict PASS in 75 s under Forge</span> Network off; the game tree mounted read-only.</p>
+<p>Source: <a href="https://github.com/SolutionsAsService/ThirdTemple">SolutionsAsService/ThirdTemple</a>; map of its world: <a href="https://github.com/SolutionsAsService/holy-temple-map">holy-temple-map</a>.</p>
+</div>
+<figure class="shot"><img src="img/holy-temple-title.png" width="320" height="240" alt="The Holy Temple's title screen in TempleOS: the name in gold, and a credit line to Terry A. Davis at the bottom."><figcaption>Captured from TempleOS under QEMU, 640×480 shown at half size.</figcaption></figure>
 </section>
 
 <section class="band">
