@@ -191,3 +191,17 @@ Compliance: tooling inventory done (§1); mode and bound stated; panel from pick
 from seat files (skipped); seed with dotted counterpoint; run type Full; landing summarizes every page and is
 measured complete at both sizes; BREAK move M2 taken; records before moves; Panel Reports per round; OBJECTs
 resolved; figures re-measured; Anchor Ledger done; run **not** recorded in the dada ledger (import_log.py not run).
+
+## Run 2 (2026-11-13): the homepage shows where the suite is
+
+**Brief (owner):** "make sure all games are on the shadw stack homepage and redesign the actual web page where we are at."
+**Kept:** the palette, type, the `shadw.game.json` wiring figure and the one element that breaks the grid (now the game wall, not one map).
+**Changed:**
+- Hero: "One file. Four games. Every one tested in a sandbox." Rows updated to the real state: four engines, 4 of 4 tests passing,
+  G2 started (KeyForge + Game Store v0.1); the games strip lists all four; the phase meter shows G2 begun.
+- Right of the hero: a 2x2 wall of the four games (captures and real output only; Shadow Duel, which has no capture here, is drawn as its
+  table of cards and labelled as such in its alt text), each with language, engine and its Forge proof.
+- New "Games on the stack" (four cards) and "Where we are" (a dated status board per product, including the Game Store, and what is new
+  since 31 October). Footer status and roadmap dated 13 November; the project-file page documents `engine: templeos` and `test.exclude`.
+**Measured:** no horizontal overflow at 1280x800 and 390x844 on index, games, roadmap and project-file; the wall hides under 860 px as the
+map did. Line endings kept CRLF in `site/` as committed.

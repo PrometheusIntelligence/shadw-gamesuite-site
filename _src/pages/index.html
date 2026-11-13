@@ -1,51 +1,76 @@
-SHADW Game Suite: one project file for worlds, tests, keys and hosting
-One shadw.game.json and one CLI over SHADW Terrain, Forge, KeyForge and shadw.cloud. Godot 4 first. Worlds and sandboxed bot tests work today; keys and hosting are next.
+SHADW Game Suite: one project file, four games, sandboxed tests
+One shadw.game.json and one CLI over SHADW Terrain, Forge, KeyForge, the Game Store and shadw.cloud. Four games in four languages pass their tests under Forge today; keys, shipping and hosting are next.
 index
 <section class="hero" aria-labelledby="hero-title">
 <div class="wrap">
 <div>
-<p class="kicker">SHADW Game Suite</p>
-<h1 id="hero-title">One file. Four products. Two already work.</h1>
-<p class="lede">Your engine stays yours. <code>shadw.game.json</code> asks Terrain for the world, Forge for sandboxed bot tests, and later KeyForge for keys and shadw.cloud for servers.</p>
+<p class="kicker">SHADW Game Suite · status 13 November 2026</p>
+<h1 id="hero-title">One file. Four games. Every one tested in a sandbox.</h1>
+<p class="lede">Your engine stays yours. <code>shadw.game.json</code> asks Terrain for the world and Forge to run your game's own test with the network off. Four games in four languages pass today; keys, shipping and hosting come next.</p>
 <figure class="wire" aria-label="The sections of shadw.game.json and the product each one calls">
-<div class="file"><b>shadw.game.json</b><span>tidewatch</span></div>
+<div class="file"><b>shadw.game.json</b><span>every game on the stack</span></div>
 <span class="brace">{</span>
-<a class="row" href="terrain.html"><code class="key">"world"</code><span class="prod"><b>Terrain makes the map</b><small>coastal_outpost, seed 7, 96×96</small></span><img class="glyph" src="img/tidewatch-map.svg" alt="" style="object-fit:cover"><span class="stamp built">built</span></a>
-<a class="row" href="project-file.html"><code class="key">"engine"</code><span class="prod"><b>Godot 4 scene</b><small>ShadwMap node, collision, spawns</small></span><svg class="glyph" viewBox="0 0 54 36" aria-hidden="true"><rect x="4" y="4" width="16" height="10" fill="none" stroke="#a3afa9" stroke-width="2"/><rect x="24" y="22" width="12" height="10" fill="#4f86a6"/><rect x="40" y="22" width="12" height="10" fill="#f3c76b"/><path d="M12 14v13h12M30 27h10" stroke="#a3afa9" stroke-width="2" fill="none"/></svg><span class="stamp built">built</span></a>
-<a class="row" href="forge.html"><code class="key">"test"</code><span class="prod"><b>Forge runs bot matches</b><small>network off, hashed events</small></span><svg class="glyph" viewBox="0 0 54 36" aria-hidden="true"><rect x="2" y="12" width="12" height="12" fill="#8fd17a"/><rect x="21" y="12" width="12" height="12" fill="#8fd17a"/><rect x="40" y="12" width="12" height="12" fill="#8fd17a"/><path d="M14 18h7M33 18h7" stroke="#e9ede6" stroke-width="2"/></svg><span class="stamp built">built</span></a>
-<a class="row" href="keyforge.html"><code class="key">"keys"</code><span class="prod"><b>KeyForge signs and licenses</b><small>tiers dev, beta, retail</small></span><svg class="glyph" viewBox="0 0 54 36" aria-hidden="true"><circle cx="16" cy="18" r="8" fill="none" stroke="#e59aa4" stroke-width="3"/><path d="M24 18h24M40 18v7M46 18v5" stroke="#e59aa4" stroke-width="3" fill="none"/></svg><span class="stamp planned">G2 planned</span></a>
+<a class="row" href="terrain.html"><code class="key">"world"</code><span class="prod"><b>Terrain makes the map</b><small>Tidewatch: coastal_outpost, seed 7</small></span><img class="glyph" src="img/tidewatch-map.svg" alt="" style="object-fit:cover"><span class="stamp built">built</span></a>
+<a class="row" href="project-file.html"><code class="key">"engine"</code><span class="prod"><b>Your engine, not ours</b><small>godot · godot .NET · none (JS) · templeos</small></span><svg class="glyph" viewBox="0 0 54 36" aria-hidden="true"><rect x="3" y="5" width="22" height="11" fill="none" stroke="#a3afa9" stroke-width="2"/><rect x="29" y="5" width="22" height="11" fill="#4f86a6"/><rect x="3" y="20" width="22" height="11" fill="#f3c76b"/><rect x="29" y="20" width="22" height="11" fill="none" stroke="#8fd17a" stroke-width="2"/></svg><span class="stamp built">4 engines</span></a>
+<a class="row" href="forge.html"><code class="key">"test"</code><span class="prod"><b>Forge runs each game's test</b><small>4 of 4 pass · network off · hashed</small></span><svg class="glyph" viewBox="0 0 54 36" aria-hidden="true"><rect x="2" y="12" width="10" height="12" fill="#8fd17a"/><rect x="15" y="12" width="10" height="12" fill="#8fd17a"/><rect x="28" y="12" width="10" height="12" fill="#8fd17a"/><rect x="41" y="12" width="10" height="12" fill="#8fd17a"/></svg><span class="stamp built">built</span></a>
+<a class="row" href="keyforge.html"><code class="key">"keys"</code><span class="prod"><b>KeyForge signs builds; the Store sells deeds</b><small>Store v0.1 runs demo purchases</small></span><svg class="glyph" viewBox="0 0 54 36" aria-hidden="true"><circle cx="16" cy="18" r="8" fill="none" stroke="#f3c76b" stroke-width="3"/><path d="M24 18h24M40 18v7M46 18v5" stroke="#f3c76b" stroke-width="3" fill="none"/></svg><span class="stamp planned">G2 started</span></a>
 <a class="row" href="cloud.html"><code class="key">"deploy"</code><span class="prod"><b>shadw.cloud hosts it</b><small>web build, lobby, server cells</small></span><svg class="glyph" viewBox="0 0 54 36" aria-hidden="true"><rect x="3" y="10" width="14" height="16" fill="none" stroke="#e59aa4" stroke-width="2"/><rect x="20" y="10" width="14" height="16" fill="none" stroke="#e59aa4" stroke-width="2"/><rect x="37" y="10" width="14" height="16" fill="none" stroke="#e59aa4" stroke-width="2" stroke-dasharray="3 2"/></svg><span class="stamp planned">G3 planned</span></a>
 <a class="row" href="roadmap.html"><code class="key">"cyber"</code><span class="prod"><b>The suite attacks its own game</b><small>replay, flood, forged entitlement</small></span><svg class="glyph" viewBox="0 0 54 36" aria-hidden="true"><path d="M27 4l13 5v9c0 8-6 13-13 15-7-2-13-7-13-15V9z" fill="none" stroke="#e59aa4" stroke-width="2.5"/></svg><span class="stamp planned">G4 planned</span></a>
 <span class="brace">}</span>
-<div class="strip"><span class="key">games</span><span class="games"><a class="chip" href="shipwright.html"><img src="img/brie.png" alt="">Brine &amp; Brie: Shipwright</a><a class="chip" href="games.html#tidewatch">Tidewatch</a><a class="chip" href="games.html#shadow-duel">Shadow Duel</a></span></div>
-<a class="strip meter-row" href="roadmap.html" style="text-decoration:none;color:inherit"><span class="key">phases</span><span class="meter" aria-label="Phases: G0 done, G1 mostly done, G2 to G5 planned"><span class="done">G0</span><span class="most">G1</span><span>G2</span><span>G3</span><span>G4</span><span>G5</span></span></a>
+<div class="strip"><span class="key">games</span><span class="games"><a class="chip" href="shipwright.html"><img src="img/brie.png" alt="">Brine &amp; Brie: Shipwright</a><a class="chip" href="games.html#tidewatch">Tidewatch</a><a class="chip" href="games.html#shadow-duel">Shadow Duel</a><a class="chip" href="games.html#holy-temple">The Holy Temple</a></span></div>
+<a class="strip meter-row" href="roadmap.html" style="text-decoration:none;color:inherit"><span class="key">phases</span><span class="meter" aria-label="Phases: G0 done, G1 mostly done (build open), G2 started, G3 to G5 planned"><span class="done">G0</span><span class="most">G1</span><span class="begun">G2</span><span>G3</span><span>G4</span><span>G5</span></span></a>
 </figure>
 </div>
-<figure class="world">
-<img src="img/tidewatch-map.svg" width="384" height="384" alt="Tidewatch's 96 by 96 coastal outpost map, generated by SHADW Terrain: sea on the west, roads, ruins and buildings inland.">
-<figcaption><b>"world"</b> as Terrain returns it: <code>coastal_outpost</code> · seed 7 · 9,216 tiles · 8 spawns · contentHash <code>857fa8c9…</code>. The same seed gives the same map; <code>shadw game world --check</code> fails if it ever changes.</figcaption>
+<figure class="wall" aria-label="The four games on the stack">
+<a class="tile" href="shipwright.html"><img src="img/shipwright-brig.png" width="480" height="270" alt="Brine &amp; Brie: Shipwright: a two-masted brig on a teal sea."><span><b>Shipwright</b><small>C# · Godot .NET · 25/25 checks</small></span></a>
+<a class="tile" href="games.html#tidewatch"><img src="img/tidewatch-map.svg" width="384" height="384" alt="Tidewatch's coastal outpost map from SHADW Terrain." style="object-fit:cover"><span><b>Tidewatch</b><small>GDScript · Godot 4 · 20 seeds</small></span></a>
+<a class="tile duel" href="games.html#shadow-duel"><svg viewBox="0 0 240 150" role="img" aria-label="Two face-down cards and one face-up card, Shadow Duel's table."><rect width="240" height="150" fill="#0b0f11"/><g transform="rotate(-8 80 75)"><rect x="52" y="30" width="56" height="84" rx="6" fill="#161e22" stroke="#4f86a6" stroke-width="2"/><path d="M60 38h40v68H60z" fill="none" stroke="#2b363b" stroke-width="2"/></g><g transform="rotate(6 160 75)"><rect x="132" y="30" width="56" height="84" rx="6" fill="#fff0bf"/><text x="160" y="80" text-anchor="middle" font-family="monospace" font-size="26" fill="#0f1417">7</text><path d="M140 40l6 0M174 104l6 0" stroke="#e59aa4" stroke-width="3"/></g><rect x="104" y="44" width="40" height="60" rx="5" fill="#161e22" stroke="#f3c76b" stroke-width="2"/></svg><span><b>Shadow Duel</b><small>JavaScript · 20 seeds</small></span></a>
+<a class="tile" href="games.html#holy-temple"><img src="img/holy-temple-title.png" width="640" height="480" alt="The Holy Temple's title screen in TempleOS, with a credit to Terry A. Davis."><span><b>The Holy Temple</b><small>HolyC · TempleOS · PASS in 75 s</small></span></a>
+<figcaption>Every tile is a capture or real output of the game. Each passes its own headless test under SHADW Forge: network off, hashed artifacts, one event chain.</figcaption>
 </figure>
 </div>
 </section>
 
-<section class="band"><div class="wrap">
-<h2>What works today</h2>
-<div class="grid3">
-<div class="card"><h3>Worlds from a seed</h3><p><code>shadw game world</code> asks SHADW Terrain for the map, writes it with a lock file, and builds a Godot scene with collision and spawn markers.</p><a class="more" href="terrain.html">Terrain in the suite</a></div>
-<div class="card"><h3>Bot matches in a sandbox</h3><p><code>shadw game test</code> runs your headless test under SHADW Forge with the network off and records hashed artifacts and an event chain.</p><a class="more" href="forge.html">Forge in the suite</a></div>
-<div class="card"><h3>Three games already run it</h3><p>Tidewatch (Godot, tactics), Shadow Duel (JavaScript, cards) and Brine &amp; Brie: Shipwright (C# on Godot .NET, sailing).</p><a class="more" href="games.html">See the games</a></div>
+<section class="band" aria-labelledby="games-h"><div class="wrap">
+<h2 id="games-h">Games on the stack</h2>
+<p class="sublede">Four games in four languages, none released yet. Each keeps its own engine and its own repository; the suite adds only a <code>shadw.game.json</code> and runs its test.</p>
+<div class="grid4">
+<article class="gcard"><img src="img/shipwright-skiff.png" width="480" height="270" alt="Shipwright: a small skiff on the grid of the shipyard."><div><h3>Brine &amp; Brie: Shipwright</h3><p class="meta">C# on Godot 4.7 .NET · sailing</p><p>A mouse builds a ship on a grid and sails it with the wind, on a sea that SHADW Terrain grows chunk by chunk.</p><p class="proof"><span class="status built">25 / 25 checks under Forge</span></p><a class="more" href="shipwright.html">Shipwright</a></div></article>
+<article class="gcard"><img src="img/tidewatch-map.svg" width="384" height="384" alt="Tidewatch's map." style="object-fit:cover;aspect-ratio:16/9"><div><h3>Tidewatch</h3><p class="meta">GDScript on Godot 4 · tactics</p><p>The map showcase: a Terrain coastal outpost, 96×96, eight spawns. Its bot match plays 3 v 3 over 20 seeds.</p><p class="proof"><span class="status built">bot match over 20 seeds</span></p><a class="more" href="games.html#tidewatch">Tidewatch</a></div></article>
+<article class="gcard"><svg viewBox="0 0 240 135" role="img" aria-label="Shadow Duel's cards."><rect width="240" height="135" fill="#0b0f11"/><rect x="70" y="26" width="48" height="74" rx="6" fill="#161e22" stroke="#4f86a6" stroke-width="2"/><rect x="124" y="26" width="48" height="74" rx="6" fill="#fff0bf"/><text x="148" y="70" text-anchor="middle" font-family="monospace" font-size="22" fill="#0f1417">7</text></svg><div><h3>Shadow Duel</h3><p class="meta">JavaScript · cards</p><p>A two-player duel on a seeded rules engine: any match replays move for move. The suite's example title (decision G3).</p><p class="proof"><span class="status built">bot v bot, 20 seeds</span></p><a class="more" href="games.html#shadow-duel">Shadow Duel</a></div></article>
+<article class="gcard"><img src="img/holy-temple-title.png" width="640" height="480" alt="The Holy Temple's title screen." style="aspect-ratio:16/9;object-fit:cover"><div><h3>The Holy Temple</h3><p class="meta">HolyC on TempleOS V5.03 · surreal RPG</p><p>365 maps, 23 regions. The test boots TempleOS headless; the OS compiles the game from source and runs its tests.</p><p class="proof"><span class="status built">TempleOS PASS in 75 s</span></p><a class="more" href="games.html#holy-temple">The Holy Temple</a></div></article>
 </div>
+</div></section>
+
+<section class="band" aria-labelledby="where-h"><div class="wrap">
+<h2 id="where-h">Where we are</h2>
+<p class="sublede">Status on 13 November 2026, product by product. Built means it runs and has tests; nothing here is a hosted service you can sign up for yet.</p>
+<div class="board">
+<div class="brow"><span class="bname">Project file and CLI</span><span class="bstate"><span class="status built">init · validate · world · test · timeline</span> <span class="status planned">build open</span></span><span class="bnote">Engines: Godot 4, Godot .NET, none (JavaScript), and <code>templeos</code> since 12 November. <code>test.exclude</code> keeps build output out of the sandbox copy.</span></div>
+<div class="brow"><span class="bname">SHADW Terrain</span><span class="bstate"><span class="status built">built</span></span><span class="bnote">Seeded maps with a content-hash lock; Godot scenes and voxel worlds.</span></div>
+<div class="brow"><span class="bname">SHADW Forge</span><span class="bstate"><span class="status built">built</span></span><span class="bnote">Runs each game's test network-off on a read-only copy; artifacts hashed, events chained. All four games pass.</span></div>
+<div class="brow"><span class="bname">KeyForge</span><span class="bstate"><span class="status planned">G2 foundation</span></span><span class="bnote">Hybrid post-quantum keys and <code>kfb1</code> build manifests exist; no game ships a signed build yet.</span></div>
+<div class="brow"><span class="bname">Game Store</span><span class="bstate"><span class="status planned">v0.1, not selling</span></span><span class="bnote">Owned copies as signed deeds; the four games are in the catalogue with demo purchases (real signatures, no money). No prices yet.</span></div>
+<div class="brow"><span class="bname">shadw.cloud</span><span class="bstate"><span class="status planned">G3 planned</span></span><span class="bnote">Web build, lobby and server cells across nodes.</span></div>
+<div class="brow"><span class="bname">Cyber mode</span><span class="bstate"><span class="status planned">G4 planned</span></span><span class="bnote">Forged entitlements, replays and floods against a staging copy of your own game.</span></div>
+</div>
+<h3>New since 31 October</h3>
+<ul class="since">
+<li><b>A fourth game and a fourth engine.</b> The Holy Temple runs under the new <code>templeos</code> engine: <code>gamec</code> boots TempleOS in QEMU, the operating system compiles the game, and Forge keeps the serial log and screenshots.</li>
+<li><b>The Game Store, v0.1.</b> Sales as deeds signed with KeyForge keys, payment checks for every rail, and all four games listed.</li>
+<li><b>Release builds outside the suite.</b> The Holy Temple also builds a zip, a VirtualBox VM, Steam depots and itch.io channels with one command; signing them with KeyForge is the next step for G2.</li>
+</ul>
 </div></section>
 
 <section class="band"><div class="wrap grid2">
 <div>
 <h2>Your engine stays your engine</h2>
-<p>The suite is not an engine. It holds only the thread between products: the project file, the CLI and, later, an engine plugin. Godot 4 is the first engine (open source, so headless servers run with no licence questions). Unity and others come after.</p>
+<p>The suite is not an engine. It holds only the thread between products: the project file, the CLI and, later, an engine plugin. Godot 4 was first (open source, so headless servers run with no licence questions); a JavaScript game needs no engine at all, and a HolyC game brings a whole operating system.</p>
 <p><a href="project-file.html">Read the project file and the CLI</a></p>
 </div>
 <div>
 <h2>Honest about what is next</h2>
-<p>Keys and signed builds (G2), shipping to the mesh (G3), attacking your own game on staging (G4) and opening to outside studios (G5) are planned, not built. Each product page says what is missing.</p>
+<p>The <code>build</code> verb (G1), signed builds and real keys (G2), shipping to the mesh (G3), attacking your own game on staging (G4) and opening to outside studios (G5) are not built yet. Each product page says what is missing.</p>
 <p><a href="roadmap.html">Roadmap and decisions</a></p>
 </div>
 </div></section>

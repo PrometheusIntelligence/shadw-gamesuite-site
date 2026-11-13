@@ -1,15 +1,15 @@
 Roadmap and decisions · SHADW Game Suite
-The SHADW Game Suite's phases G0 to G5, each closed by a test on real machines, and the decisions behind it. G0 and most of G1 are built.
+The SHADW Game Suite's phases G0 to G5, each closed by a test on real machines, and the decisions behind it. G0 and most of G1 are built; G2 has started.
 roadmap
 <div class="wrap">
-<header class="pagehead"><p class="kicker">Roadmap</p><h1>Each phase closes on a test, not a document</h1><p class="lede">Status on 31 October 2026.</p></header>
+<header class="pagehead"><p class="kicker">Roadmap</p><h1>Each phase closes on a test, not a document</h1><p class="lede">Status on 13 November 2026. Four games pass their tests under Forge, in Godot, Godot .NET, JavaScript and HolyC on TempleOS.</p></header>
 
 <section class="tablewrap">
 <table>
 <tr><th>Phase</th><th>Goal</th><th>Closes when</th><th>State</th></tr>
 <tr><td><strong>G0 Thread</strong></td><td>The four products know about each other</td><td>Project file and validator; <code>init</code> and <code>world</code>; a Terrain map opens as a Godot scene</td><td><span class="status built">done</span></td></tr>
-<tr><td><strong>G1 Build</strong></td><td>Sandboxed build and test</td><td><code>build</code> and <code>test</code> run under Forge; artifacts hashed; events in one timeline</td><td><span class="status built">test, timeline done</span> <span class="status planned">build open</span></td></tr>
-<tr><td><strong>G2 Keys</strong></td><td>Signed builds and real keys</td><td>Licensing API on a shadw.cloud function; a game refuses a tampered build; a revoked key stops working on another node</td><td><span class="status planned">foundation built</span></td></tr>
+<tr><td><strong>G1 Build</strong></td><td>Sandboxed build and test</td><td><code>build</code> and <code>test</code> run under Forge; artifacts hashed; events in one timeline</td><td><span class="status built">test, timeline done; 4 games; engines godot, none, templeos</span> <span class="status planned">build open</span></td></tr>
+<tr><td><strong>G2 Keys</strong></td><td>Signed builds and real keys</td><td>Licensing API on a shadw.cloud function; a game refuses a tampered build; a revoked key stops working on another node</td><td><span class="status planned">foundation built; Game Store v0.1 (deeds, demo purchases)</span></td></tr>
 <tr><td><strong>G3 Ship</strong></td><td>The game is live on the mesh</td><td><code>ship</code> deploys web build, lobby and server cells; 8 players finish a match across two nodes</td><td><span class="status planned">planned</span></td></tr>
 <tr><td><strong>G4 Defend</strong></td><td>The suite attacks its own game</td><td><code>attack</code> runs forged-entitlement, replay and flood drills on staging; each drill has a test that fails if the defence is removed</td><td><span class="status planned">planned</span></td></tr>
 <tr><td><strong>G5 Open</strong></td><td>Outside studios</td><td>A game that is not ours goes from G0 to G3 using only the docs</td><td><span class="status planned">planned</span></td></tr>

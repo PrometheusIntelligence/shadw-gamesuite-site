@@ -150,3 +150,40 @@ footer li { padding: 3px 0; }
 @media (prefers-reduced-motion: no-preference) {
   .row, .chip { transition: background 0.15s, border-color 0.15s; }
 }
+
+/* Home, 13 November 2026: the four games replace the single map at the right of the hero (it still bleeds off the edge). */
+.meter span.begun { background: linear-gradient(90deg, var(--gold) 30%, transparent 30%); color: var(--ink); border-color: var(--gold); }
+.wall { margin: 0 calc(-1 * max(var(--gutter), (100vw - var(--max)) / 2 + var(--gutter))) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding-right: 24px; }
+.wall .tile { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); background: var(--sunk); color: var(--ink); text-decoration: none; }
+.wall .tile:first-child { border-radius: 10px 10px 10px 10px; }
+.wall .tile img, .wall .tile svg { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; display: block; }
+.wall .tile > span { position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 10px; background: linear-gradient(transparent, rgba(11, 15, 17, 0.92) 40%); display: flex; flex-direction: column; line-height: 1.25; }
+.wall .tile b { font-weight: 600; font-size: 0.95rem; }
+.wall .tile small { font-family: var(--mono); font-size: 0.7rem; color: var(--built); }
+.wall .tile:hover { border-color: var(--gold); }
+.wall figcaption { grid-column: 1 / -1; font-family: var(--mono); font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
+.sublede { color: var(--muted); margin-top: -4px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 1100px) { .grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .grid4 { grid-template-columns: minmax(0, 1fr); } }
+.gcard { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.gcard > img, .gcard > svg { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; display: block; border-bottom: 1px solid var(--line); background: var(--sunk); }
+.gcard > div { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+.gcard h3 { margin: 0 0 2px; }
+.gcard .meta { font-family: var(--mono); font-size: 0.76rem; color: var(--gold); margin: 0 0 8px; }
+.gcard p { color: var(--muted); margin: 0 0 10px; font-size: 0.95rem; }
+.gcard .proof { margin-top: auto; }
+.gcard a.more { font-weight: 600; }
+.board { border: 1px solid var(--line); border-radius: 10px; background: var(--sunk); }
+.brow { display: grid; grid-template-columns: 12em minmax(0, 15em) minmax(0, 1fr); gap: 14px; padding: 12px 16px; border-top: 1px solid var(--line); align-items: baseline; }
+.brow:first-child { border-top: 0; }
+.bname { font-weight: 600; }
+.bstate .status { margin: 0 4px 4px 0; }
+.bnote { color: var(--muted); font-size: 0.93rem; }
+.since { padding-left: 1.1em; }
+.since li { margin: 0 0 8px; color: var(--muted); }
+.since b { color: var(--ink); }
+@media (max-width: 860px) {
+  .hero .wall { display: none; }
+  .brow { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}

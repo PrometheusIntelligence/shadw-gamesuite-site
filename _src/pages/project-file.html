@@ -25,7 +25,7 @@ project-file
 <tr><td><code>init</code></td><td>writes the project file (and a Godot project)</td><td><span class="status built">built</span></td></tr>
 <tr><td><code>validate</code></td><td>checks the file, world params against Terrain, seats against spawns</td><td><span class="status built">built</span></td></tr>
 <tr><td><code>world</code></td><td>generates and locks the map; Godot scene</td><td><span class="status built">built</span></td></tr>
-<tr><td><code>test</code></td><td>runs the headless test under Forge</td><td><span class="status built">built</span></td></tr>
+<tr><td><code>test</code></td><td>runs the headless test under Forge; <code>test.exclude</code> leaves build output out of the copy</td><td><span class="status built">built</span></td></tr>
 <tr><td><code>timeline</code></td><td>merges every run's events, checks chains</td><td><span class="status built">built</span></td></tr>
 <tr><td><code>build</code></td><td>engine export under Forge</td><td><span class="status planned">G1</span></td></tr>
 <tr><td><code>sign</code>, <code>keys</code></td><td>signed builds, entitlements</td><td><span class="status planned">G2</span></td></tr>
@@ -34,6 +34,17 @@ project-file
 </table></div>
 <p>Verbs not built yet exit with code 2 and name their phase.</p>
 </div>
+</section>
+
+<section>
+<h2>Engines</h2>
+<p><code>engine.name</code> is <code>godot</code>, <code>unity</code>, <code>none</code> (a JavaScript game such as Shadow Duel) or <code>templeos</code>. With <code>templeos</code>, a test command that starts with <code>gamec</code> runs the TempleOS backend: it boots TempleOS V5.03 in QEMU, the operating system compiles the HolyC game from source and runs its tests, and the serial log and screenshots become Forge artifacts. The Holy Temple's project file:</p>
+<pre class="code">{
+  <span class="k">"game"</span>: "the-holy-temple",
+  <span class="k">"engine"</span>: { "name": "templeos", "version": "5.03", "export": "desktop" },
+  <span class="k">"test"</span>: { "command": ["gamec", "run", ".", "--seconds", "900"], "timeout": "20m", "memory": "2Gi",
+            "exclude": [".claude", "dist"] }
+}</pre>
 </section>
 
 <section>

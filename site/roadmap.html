@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roadmap and decisions · SHADW Game Suite</title>
-<meta name="description" content="The SHADW Game Suite's phases G0 to G5, each closed by a test on real machines, and the decisions behind it. G0 and most of G1 are built.">
+<meta name="description" content="The SHADW Game Suite's phases G0 to G5, each closed by a test on real machines, and the decisions behind it. G0 and most of G1 are built; G2 has started.">
 <link rel="canonical" href="https://shadw-gamesuite-site.shadw.app/roadmap">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Roadmap and decisions · SHADW Game Suite">
-<meta property="og:description" content="The SHADW Game Suite's phases G0 to G5, each closed by a test on real machines, and the decisions behind it. G0 and most of G1 are built.">
+<meta property="og:description" content="The SHADW Game Suite's phases G0 to G5, each closed by a test on real machines, and the decisions behind it. G0 and most of G1 are built; G2 has started.">
 <meta property="og:url" content="https://shadw-gamesuite-site.shadw.app/roadmap">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://shadw-gamesuite-site.shadw.app/img/shipwright-brig.png">
@@ -26,14 +26,14 @@
 </div></header>
 <main id="main">
 <div class="wrap">
-<header class="pagehead"><p class="kicker">Roadmap</p><h1>Each phase closes on a test, not a document</h1><p class="lede">Status on 31 October 2026.</p></header>
+<header class="pagehead"><p class="kicker">Roadmap</p><h1>Each phase closes on a test, not a document</h1><p class="lede">Status on 13 November 2026. Four games pass their tests under Forge, in Godot, Godot .NET, JavaScript and HolyC on TempleOS.</p></header>
 
 <section class="tablewrap">
 <table>
 <tr><th>Phase</th><th>Goal</th><th>Closes when</th><th>State</th></tr>
 <tr><td><strong>G0 Thread</strong></td><td>The four products know about each other</td><td>Project file and validator; <code>init</code> and <code>world</code>; a Terrain map opens as a Godot scene</td><td><span class="status built">done</span></td></tr>
-<tr><td><strong>G1 Build</strong></td><td>Sandboxed build and test</td><td><code>build</code> and <code>test</code> run under Forge; artifacts hashed; events in one timeline</td><td><span class="status built">test, timeline done</span> <span class="status planned">build open</span></td></tr>
-<tr><td><strong>G2 Keys</strong></td><td>Signed builds and real keys</td><td>Licensing API on a shadw.cloud function; a game refuses a tampered build; a revoked key stops working on another node</td><td><span class="status planned">foundation built</span></td></tr>
+<tr><td><strong>G1 Build</strong></td><td>Sandboxed build and test</td><td><code>build</code> and <code>test</code> run under Forge; artifacts hashed; events in one timeline</td><td><span class="status built">test, timeline done; 4 games; engines godot, none, templeos</span> <span class="status planned">build open</span></td></tr>
+<tr><td><strong>G2 Keys</strong></td><td>Signed builds and real keys</td><td>Licensing API on a shadw.cloud function; a game refuses a tampered build; a revoked key stops working on another node</td><td><span class="status planned">foundation built; Game Store v0.1 (deeds, demo purchases)</span></td></tr>
 <tr><td><strong>G3 Ship</strong></td><td>The game is live on the mesh</td><td><code>ship</code> deploys web build, lobby and server cells; 8 players finish a match across two nodes</td><td><span class="status planned">planned</span></td></tr>
 <tr><td><strong>G4 Defend</strong></td><td>The suite attacks its own game</td><td><code>attack</code> runs forged-entitlement, replay and flood drills on staging; each drill has a test that fails if the defence is removed</td><td><span class="status planned">planned</span></td></tr>
 <tr><td><strong>G5 Open</strong></td><td>Outside studios</td><td>A game that is not ours goes from G0 to G3 using only the docs</td><td><span class="status planned">planned</span></td></tr>
@@ -62,10 +62,10 @@
 </div>
 </main>
 <footer><div class="wrap">
-<div><p><strong>SHADW Game Suite</strong><br>One project file and one CLI over SHADW Terrain, Forge, KeyForge and shadw.cloud.</p>
-<p>Status on 31 October 2026: phases G0 and G1 built; G2 to G5 planned. Nothing on this site is a hosted service you can sign up for yet.</p></div>
+<div><p><strong>SHADW Game Suite</strong><br>One project file and one CLI over SHADW Terrain, Forge, KeyForge, the Game Store and shadw.cloud.</p>
+<p>Status on 13 November 2026: G0 built, G1 built except <code>build</code>, G2 started (KeyForge, Game Store v0.1), G3 to G5 planned. Four games pass their tests under Forge. Nothing on this site is a hosted service you can sign up for yet.</p></div>
 <div><ul><li><a href="terrain.html">Terrain: make worlds</a></li><li><a href="forge.html">Forge: test in a sandbox</a></li><li><a href="keyforge.html">KeyForge: keys and licences</a></li><li><a href="cloud.html">shadw.cloud: hosting</a></li></ul></div>
-<div><ul><li><a href="project-file.html">shadw.game.json and the CLI</a></li><li><a href="games.html">Games made with it</a></li><li><a href="shipwright.html">Brine &amp; Brie: Shipwright</a></li><li><a href="roadmap.html">Roadmap and decisions</a></li><li><a href="https://shadw-terrain.shadw.app/">SHADW Terrain site</a></li><li><a href="https://personalportfolio.shadw.app/">SolutionsAsService</a></li></ul></div>
+<div><ul><li><a href="project-file.html">shadw.game.json and the CLI</a></li><li><a href="games.html">Games made with it</a></li><li><a href="shipwright.html">Brine &amp; Brie: Shipwright</a></li><li><a href="games.html#holy-temple">The Holy Temple</a></li><li><a href="https://shadw-game-store.shadw.app/">SHADW Game Store</a></li><li><a href="roadmap.html">Roadmap and decisions</a></li><li><a href="https://shadw-terrain.shadw.app/">SHADW Terrain site</a></li><li><a href="https://personalportfolio.shadw.app/">SolutionsAsService</a></li></ul></div>
 </div></footer>
 </body>
 </html>
